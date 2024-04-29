@@ -236,6 +236,8 @@ def post_process(
     historical_warming=0.85,
     historical_warming_reference_period="1850-1900",
     historical_warming_evaluation_period="1995-2014",
+    year_filter_first=1995,
+    year_filter_last=2101
 ):
     LOGGER.info("Beginning climate post-processing")
     LOGGER.info("Removing unknown units and keeping only World data")
@@ -325,7 +327,7 @@ def post_process(
     )
     res = res.append(exceedance_probability_timeseries)
 
-    year_filter = range(1995, 2101)
+    year_filter = range(year_filter_first, year_filter_last)
     LOGGER.info("Keeping only data from %s", year_filter)
     res = res.filter(year=year_filter)
 

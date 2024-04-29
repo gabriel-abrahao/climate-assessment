@@ -254,7 +254,24 @@ save_csv_combined_output_option = click.option(
     type=bool,
     show_default=True,
 )
-
+year_filter_first_option = click.option(
+    "--year-filter-first",
+    help="First year for output filter",
+    is_flag=True,
+    required=False,
+    default=1995,
+    type=int,
+    show_default=True,
+)
+year_filter_last_option = click.option(
+    "--year-filter-last",
+    help="Last year for output filter",
+    is_flag=True,
+    required=False,
+    default=2101,
+    type=int,
+    show_default=True,
+)
 
 def _setup_logging(logger):
     """
@@ -887,6 +904,8 @@ def infill(
 @nonco2_warming_option
 @save_raw_climate_output_option
 @save_csv_combined_output_option
+@year_filter_first_option
+@year_filter_last_option
 def clim_cli(
     harmonizedinfilledemissions,
     outdir,
@@ -906,6 +925,8 @@ def clim_cli(
     co2_and_non_co2_warming,
     save_raw_climate_output,
     save_csv_combined_output,
+    year_filter_first,
+    year_filter_last,
 ):
     """
     Run the climate emulator step of the IPCC AR6 climate asessment workflow.
@@ -952,6 +973,8 @@ def clim_cli(
         save_raw_output=save_raw_climate_output,
         co2_and_non_co2_warming=co2_and_non_co2_warming,
         prefix=prefix,
+        year_filter_first=1995,
+        year_filter_last=2101,
     )
     if df_climate is None:
         LOGGER.error("Climate assessment failed, exiting")

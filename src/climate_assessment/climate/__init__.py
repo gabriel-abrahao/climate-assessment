@@ -43,6 +43,8 @@ def climate_assessment(
     fair_extra_config=None,
     co2_and_non_co2_warming=False,
     prefix="AR6 climate diagnostics",
+    year_filter_first=1995,
+    year_filter_last=2101
 ):
     """
     Run the climate assessment
@@ -202,6 +204,8 @@ def climate_assessment(
                 outdir=outdir,
                 test_run=test_run,
                 co2_and_non_co2_warming=co2_and_non_co2_warming,
+                year_filter_first=year_filter_first,
+                year_filter_last=year_filter_last
             )
 
             LOGGER.info(
@@ -283,6 +287,8 @@ def run_and_post_process(
     test_run,
     save_raw_output,
     co2_and_non_co2_warming,
+    year_filter_first,
+    year_filter_last
 ):
     """
     Run the climate models probabilistically
@@ -411,6 +417,8 @@ def run_and_post_process(
         historical_warming=historical_warming,
         historical_warming_reference_period=historical_warming_reference_period,
         historical_warming_evaluation_period=historical_warming_evaluation_period,
+        year_filter_first = year_filter_first,
+        year_filter_last = year_filter_last
     )
 
 
