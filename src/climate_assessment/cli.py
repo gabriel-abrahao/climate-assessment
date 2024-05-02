@@ -257,7 +257,7 @@ save_csv_combined_output_option = click.option(
 year_filter_first_option = click.option(
     "--year-filter-first",
     help="First year for output filter",
-    is_flag=True,
+    is_flag=False,
     required=False,
     default=1995,
     type=int,
@@ -266,7 +266,7 @@ year_filter_first_option = click.option(
 year_filter_last_option = click.option(
     "--year-filter-last",
     help="Last year for output filter",
-    is_flag=True,
+    is_flag=False,
     required=False,
     default=2101,
     type=int,
